@@ -17,4 +17,92 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.microservices.demo</groupId>
+            <artifactId>app-config-data</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.microservices.demo</groupId>
+            <artifactId>common-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.microservices.demo</groupId>
+            <artifactId>kafka-producer</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.microservices.demo</groupId>
+            <artifactId>kafka-admin</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.twitter4j</groupId>
+            <artifactId>twitter4j-stream</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+        </dependency>
+
+
+        <!--        It's a compile-only tool which are not required at runtime-->
+<!--        <dependency>-->
+<!--            <groupId>org.projectlombok</groupId>-->
+<!--            <artifactId>lombok</artifactId>-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
+    </dependencies>
+
+    <build>
+        <plugins>
+<!--            This will create a runnable jar automatically for our microservice-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <image>
+                        <name>${project.groupId}/twitter.to.kafka.service:${project.version}</name>
+                    </image>
+                </configuration>
+                <executions>
+<!--                        in the execution section, we will give the phase as install because we want to create the docker image when we run the maven install command-->
+                    <execution>
+<!--                        triggers the image creation during the mvn install lifecycle.-->
+                        <phase>install</phase>
+<!--                        As a goal  we will set build-image which will actually create the docker image for us-->
+                        <goals>
+<!--                            Here we use springboot build-image property to create the docker image. springboot build-image follows layered approach to prevent 2 overheads -->
+<!--                            Layered approach: Prevents single fat jar and use caching during image update. That means, if there is an update, there will be no need to update the whole jar. This is achieved with the help of cloud native build packs-->
+<!--                            Then we can use them to create docker compatible images that you can run anywhere-->
+<!--                            Here the point is that docker image is created with a layered approach. And layering is designed to separate the codes based on how likely it is to change between application builds -->
+                            <goal>build-image</goal>
+<!--                            The spring-boot-maven-plugin provides the build-image goal, which uses Cloud Native Buildpacks to create optimized Docker images without requiring a Dockerfile-->
+<!--                            creates the Docker image using Buildpacks-->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

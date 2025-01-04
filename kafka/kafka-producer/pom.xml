@@ -10,7 +10,7 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kafka-admin</artifactId>
+    <artifactId>kafka-producer</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -26,7 +26,7 @@
 
         <dependency>
             <groupId>com.microservices.demo</groupId>
-            <artifactId>common-config</artifactId>
+            <artifactId>kafka-model</artifactId>
         </dependency>
 
         <dependency>
@@ -35,8 +35,13 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-avro-serializer</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
         </dependency>
     </dependencies>
 
