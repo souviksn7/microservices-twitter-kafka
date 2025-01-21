@@ -20,6 +20,7 @@ import java.util.Arrays;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 
+// Note that prior to running twitter-to-kafka service, we also ran kafka_cluster.yml(docker-compose -f kafka_cluster.yml up) because twitter-to-kafka service requires a kafka cluster running locally
 @SpringBootApplication
 @ComponentScan(basePackages = "com.microservices.demo")
 public class TwitterToKafkaServiceApplication implements CommandLineRunner {

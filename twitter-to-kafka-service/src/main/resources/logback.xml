@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--    Here we use config-server and config-server/logs for the app name and dev home properties which are specific to the config server-->
+    <property name = "DEV_HOME" value = "./twitter-to-kafka-service/logs"/>
+    <property name = "APP_NAME" value = "twitter-to-kafka-service"/>
+
+    <!--    Specifying resource from "logback-common.xml" from "app-config-data" module-->
+    <!--    Since we put the logback common xml file in the resources folder of app-config-data module, it will end up in the class path. So we can actually include this using a resource without setting any path here but by just setting the name of the logback file as logback will scan the class path starring from the top directory-->
+    <include resource = "logback-common.xml"/>
+</configuration>

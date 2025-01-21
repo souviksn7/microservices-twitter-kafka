@@ -1,0 +1,29 @@
+2025-01-12 14:34:39 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-01-12 14:34:39 [main] INFO  c.m.demo.config.server.ConfigServer - Starting ConfigServer using Java 21.0.1 with PID 754571 (/home/souvik/Desktop/microservices-demo/config-server/target/classes started by souvik in /home/souvik/Desktop/microservices-demo)
+2025-01-12 14:34:39 [main] INFO  c.m.demo.config.server.ConfigServer - No active profile set, falling back to 1 default profile: "default"
+2025-01-12 14:34:40 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=8121d106-261b-3e7c-b046-1b9e0a851612
+2025-01-12 14:34:40 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8888 (http)
+2025-01-12 14:34:40 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2025-01-12 14:34:40 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-12 14:34:40 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2025-01-12 14:34:40 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-12 14:34:40 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 873 ms
+2025-01-12 14:34:41 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'defaultEnvironmentRepository' defined in class path resource [org/springframework/cloud/config/server/config/DefaultRepositoryConfiguration.class]: You need to configure a uri for the git repository.
+2025-01-12 14:34:41 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-01-12 14:34:41 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-01-12 14:34:41 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Invalid config server configuration.
+
+Action:
+
+If you are using the git profile, you need to set a Git URI in your configuration.  If you have set spring.cloud.config.server.bootstrap=true, you need to use a composite configuration.
+

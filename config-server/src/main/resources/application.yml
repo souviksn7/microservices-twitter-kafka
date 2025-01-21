@@ -1,0 +1,18 @@
+server:
+  port: 8888
+
+logging:
+  level:
+    ROOT: INFO
+    org.spring.framework.cloud.config: DEBUG #with debug level, I can see all the details about the config server in the log output. I am overriding the logging level that is already defined in the logback xml file
+
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:/home/souvik/Desktop/microservices-demo/config-server-repository
+          clone-on-start: true
+    fail-fast: true

@@ -30,10 +30,13 @@ public class KafkaAdminClient {
 
     private final RetryConfigData retryConfigData;
 
+    // AdminClient is a class provided by Apache Kafka within the Kafka Clients library that allows administrative operations on Kafka brokers. It is used to manage and inspect various Kafka cluster resources, such as topics, brokers, and configurations
     private final AdminClient adminClient;
 
+    // A RetryTemplate in Spring Framework is a utility that provides retry operations for executing code that may fail. It allows configuring retry policies and handling failure scenarios with retries, making it ideal for managing transient errors, such as network failures or temporary unavailability of external systems.
     private final RetryTemplate retryTemplate;
 
+    // WebClient is a non-blocking, reactive client for making HTTP requests in Spring WebFlux, part of the Spring Framework. It provides a modern alternative to RestTemplate for interacting with REST APIs and web services. Unlike RestTemplate, which is synchronous, WebClient is asynchronous and reactive, making it suitable for scalable and efficient applications, especially in microservices and cloud-based environments.
     private final WebClient webClient;
 
 
@@ -46,6 +49,7 @@ public class KafkaAdminClient {
     }
 
     public void createTopics(){
+        // A Kafka client class representing the result of a topic creation request. It is used to handle the response when attempting to create topics in Kafka asynchronously.
         CreateTopicsResult createTopicsResult;
         try{
             // call a method with retry logic configured in the retry config
@@ -118,6 +122,7 @@ public class KafkaAdminClient {
         return topics.stream().anyMatch(topic -> topic.name().equals(topicName));
     }
 
+    // RetryContext is an interface in Spring Retry that provides contextual information about the current retry operation. It is used within the retry logic to access details such as the number of retries attempted, the exception that caused the retry, and other metadata. This context is available during each attempt of the retry and helps in making decisions or logging relevant information.
     private CreateTopicsResult doCreateTopics(RetryContext retryContext) {
         List<String> topicNames = kafkaConfigData.getTopicNamesToCreate();
         LOG.info("Creating {} topics(s), attempt {}", topicNames.size(), retryContext.getRetryCount());

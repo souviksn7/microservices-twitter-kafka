@@ -57,7 +57,6 @@ public class KafkaProducerConfig<K extends Serializable, V extends SpecificRecor
     // We will crate a bean to construct a producer factory where we will return a default kafka producer.
     @Bean
     public ProducerFactory<K, V> producerFactory(){
-        System.out.println("so far so good");
         return new DefaultKafkaProducerFactory<>(producerConfig());
     }
 

@@ -1,0 +1,35 @@
+#spring:
+#  application:
+#    name: twitter-to-kafka-service
+#  profiles:
+#    active: twitter_to_kafka
+#  cloud:
+#    config:
+#      name: twitter-to-kafka-service,config-client
+
+
+## We need to add a bootstrap yml file to set up spring cloud properties
+## We need to use bootstrap configuration here, as the fetching of configuration from config-server should be before the loading the application configuration
+#spring:
+#  application:
+#    name: twitter-to-kafka-service #specifying the spring application name which is the name of our microservice
+#  profiles:
+#    active: twitter_to_kafka #setting the active profile
+#  config:
+#    import: 'configserver:'
+#  cloud:
+#    config:
+#      name: twitter-to-kafka-service, config-client #specifying spring cloud config name. "config-client" is important because we use this prefix in the configuration files of "config-server-repository". That means we want to get data from "config-client-twitter-to-kafka.yml" for "twitter-to-kafka-service"
+#      uri: http://localhost:8888
+
+#
+#spring:
+#  application:
+#    name: twitter-to-kafka-service # Name of your microservice
+#  cloud:
+#    config:
+#      name: twitter-to-kafka-service, config-client # Names of the files in the config repository to fetch
+#      uri: http://localhost:8888 # URL of the Config Server
+#  profiles:
+#    active: twitter_to_kafka # The active profile corresponding to "config-client-twitter-to-kafka.yml"
+

@@ -64,6 +64,12 @@
             <artifactId>json</artifactId>
         </dependency>
 
+<!--        By adding this dependency, we say that this microservice will use the spring-cloud-config-server-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
 
         <!--        It's a compile-only tool which are not required at runtime-->
 <!--        <dependency>-->
